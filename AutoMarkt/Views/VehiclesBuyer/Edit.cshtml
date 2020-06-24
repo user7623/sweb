@@ -1,0 +1,45 @@
+﻿@model AutoMarkt.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Vehicle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="form-group">
+                <label asp-for="BuyerFullname" class="control-label"></label>
+                <input asp-for="BuyerFullname" class="form-control" />
+                <span asp-validation-for="BuyerFullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="buyerAddres" class="control-label"></label>
+                <input asp-for="buyerAddres" class="form-control" />
+                <span asp-validation-for="buyerAddres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyerPhone" class="control-label"></label>
+                <input asp-for="BuyerPhone" class="form-control" />
+                <span asp-validation-for="BuyerPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
