@@ -19,9 +19,27 @@ namespace AutoMarkt.Controllers
         }
 
         // GET: VehiclesBuyer
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string Make, int EnginePower, int Price)
         {
-            return View(await _context.Vehicle.ToListAsync());
+            //filtriraj prvo odobreni
+            var vehicle = from c in _context.Vehicle
+                          select c;
+            vehicle = vehicle.Where(d => d.Approved == true);
+            //filtriraj po specificni baranja
+            if (!String.IsNullOrEmpty(Make))
+            {
+                vehicle = vehicle.Where(d => d.Make.Contains(Make));
+            }
+            if(EnginePower != 0)
+            {
+                vehicle = vehicle.Where(d => d.EnginePower == EnginePower);
+            }
+            if (Price != 0)
+            {
+                vehicle = vehicle.Where(d => d.Price == Price);
+            }
+
+            return View(await vehicle.ToListAsync());
         }
 
         // GET: VehiclesBuyer/Details/5

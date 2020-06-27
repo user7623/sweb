@@ -2,7 +2,6 @@ C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\appsetti
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\AutoMarkt.exe
-C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.csprojAssemblyReference.cache
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.RazorAssemblyInfo.cache
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.RazorAssemblyInfo.cs
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.AssemblyInfoInputs.cache
@@ -156,7 +155,6 @@ C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\ru\Micro
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.Views.pdb
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.dll
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.pdb
@@ -186,3 +184,10 @@ C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Vi
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Views\VehiclesBuyer\Edit.cshtml.g.cs
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Views\VehiclesBuyer\Index.cshtml.g.cs
 C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Views\Vehicles\Approved.cshtml.g.cs
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\AutoMarkt.csprojAssemblyReference.cache
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Views\Vehicles\AwaitingApproval.cshtml.g.cs
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Views\VehiclesEmployee\addPicture.cshtml.g.cs
+C:\Users\Filip\source\repos\AutoMarkt\AutoMarkt\obj\Debug\netcoreapp3.1\Razor\Views\VehiclesEmployee\showPicture.cshtml.g.cs

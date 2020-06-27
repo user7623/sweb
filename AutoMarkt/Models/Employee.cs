@@ -11,6 +11,9 @@ namespace AutoMarkt.Models
         public string Id { get; set; }
 
         [Required]
+        public String EmployeeId { get; set; }
+
+        [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
@@ -46,7 +49,7 @@ namespace AutoMarkt.Models
             get { return String.Format("{0} {1}", Name, LastName); }
         }
 
-        public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<EmployeeVehicle> Vehicles { get; set; }
 
     }
 }

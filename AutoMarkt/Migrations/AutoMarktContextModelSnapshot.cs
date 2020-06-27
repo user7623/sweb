@@ -15,7 +15,7 @@ namespace AutoMarkt.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -33,6 +33,10 @@ namespace AutoMarkt.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -65,6 +69,34 @@ namespace AutoMarkt.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employee");
+                });
+
+            modelBuilder.Entity("AutoMarkt.Models.EmployeeVehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("employeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("vehicleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("employeeId");
+
+                    b.HasIndex("vehicleId");
+
+                    b.ToTable("employeeVehicle");
                 });
 
             modelBuilder.Entity("AutoMarkt.Models.Owner", b =>
@@ -101,6 +133,9 @@ namespace AutoMarkt.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("Approved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("BuyerFullname")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
@@ -121,17 +156,16 @@ namespace AutoMarkt.Migrations
                         .HasColumnType("nvarchar(300)")
                         .HasMaxLength(300);
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmployeeId1")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EnginePower")
                         .HasColumnType("int");
 
-                    b.Property<int>("Fuel")
-                        .HasColumnType("int")
+                    b.Property<string>("Fuel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
                     b.Property<string>("Make")
@@ -159,16 +193,18 @@ namespace AutoMarkt.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId1");
-
                     b.ToTable("Vehicle");
                 });
 
-            modelBuilder.Entity("AutoMarkt.Models.Vehicle", b =>
+            modelBuilder.Entity("AutoMarkt.Models.EmployeeVehicle", b =>
                 {
-                    b.HasOne("AutoMarkt.Models.Employee", null)
+                    b.HasOne("AutoMarkt.Models.Employee", "employee")
                         .WithMany("Vehicles")
-                        .HasForeignKey("EmployeeId1");
+                        .HasForeignKey("employeeId");
+
+                    b.HasOne("AutoMarkt.Models.Vehicle", "vehicle")
+                        .WithMany()
+                        .HasForeignKey("vehicleId");
                 });
 #pragma warning restore 612, 618
         }

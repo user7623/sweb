@@ -23,6 +23,13 @@ namespace AutoMarkt.Controllers
         {
             return View(await _context.Vehicle.ToListAsync());
         }
+        public async Task<IActionResult> AwaitingApproval()
+        {
+            var vehicles = from v in _context.Vehicle
+                           select v;
+            vehicles = vehicles.Where(v => v.Approved == false);
+            return View(await vehicles.ToListAsync());
+        }
 
         // GET: Vehicles/Details/5
         public async Task<IActionResult> Details(string id)
@@ -126,7 +133,35 @@ namespace AutoMarkt.Controllers
             }
             return View(vehicle);
         }
+        public async Task<IActionResult> Approve(string id, [Bind("Id,Make,Colour,cc,Price,EnginePower,Weight,Fuel,ChassisNumber,Description,pic,EmployeeId,Approved,SaleDate,BuyerFullname,buyerAddres,BuyerPhone")] Vehicle vehicle)
+        {
+            if (id != vehicle.Id)
+            {
+                return NotFound();
+            }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(vehicle);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!VehicleExists(vehicle.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(vehicle);
+        }
         // GET: Vehicles/Delete/5
         public async Task<IActionResult> Delete(string id)
         {

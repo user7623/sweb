@@ -1,17 +1,29 @@
 ﻿@model IEnumerable<AutoMarkt.Models.Vehicle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Browse vehicles online";
 }
 
-<h1>Index</h1>
+    <form asp-controller="VehiclesBuyer" asp-action="Index" method="get">
+        <p>
+            Make: <input type="text" name="Make">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+            EnginePower: <input type="number" name="EnginePower">
+
+            Price: <input type="number" name="Price">
+
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                <p>
+                    Picture
+                </p>
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Make)
             </th>
@@ -36,20 +48,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.ChassisNumber)
             </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.pic)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeId)
             </th>
-            
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.pic)" height="25" width="25" alt="noImage" />
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Make)
             </td>
@@ -74,14 +86,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ChassisNumber)
             </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.pic)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.EmployeeId)
             </td>
-            
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Buy</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a>

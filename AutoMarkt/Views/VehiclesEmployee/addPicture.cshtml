@@ -1,0 +1,35 @@
+﻿@model AutoMarkt.Models.Vehicle
+
+@{
+    ViewData["Title"] = "addPicture";
+}
+
+<h1>addPicture</h1>
+<br />
+<br />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Make)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Make)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.ChassisNumber)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.ChassisNumber)
+    </dd>
+</dl>
+<form method="post" asp-controller="VehiclesEmployee" asp-action="showPicture" enctype="multipart/form-data">
+
+    <p>Please check if the information is correct before uploading</p>
+
+    <label>Make:</label>
+    <input type="text" name="Make" value=@Html.DisplayFor(model => model.Make) /><br />
+    <label>Chassis number</label>
+    <input type="text" name="chassisNumber" value=@Html.DisplayFor(model => model.ChassisNumber) /><br />
+    <input type="file" name="pic" /><br />
+
+    <input type="submit" value="upload" />
+</form>

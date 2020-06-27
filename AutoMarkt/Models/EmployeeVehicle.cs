@@ -17,5 +17,7 @@ namespace AutoMarkt.Models
 
         public Vehicle vehicle { get; set; }
 
+
+
     }
 }

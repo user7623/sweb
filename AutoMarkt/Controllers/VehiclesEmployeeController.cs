@@ -6,18 +6,59 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AutoMarkt.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace AutoMarkt.Controllers
 {
     public class VehiclesEmployeeController : Controller
     {
         private readonly AutoMarktContext _context;
+        private readonly Microsoft.AspNetCore.Hosting.IWebHostEnvironment he;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public VehiclesEmployeeController(AutoMarktContext context)
+        public VehiclesEmployeeController(AutoMarktContext context, IWebHostEnvironment e, IWebHostEnvironment hostEnvironment)
         {
+            he = e;
+            this.hostEnvironment = hostEnvironment;
             _context = context;
+
         }
 
+        [HttpPost]
+        public async Task<IActionResult> showPicture(string Make, long chassisNumber, IFormFile pic)
+        {
+            ViewData["fname"] = Make;
+            if (pic != null)
+            {
+                var filename = Path.Combine(he.WebRootPath + "/images/", chassisNumber + Path.GetFileName(pic.FileName));
+                pic.CopyTo(new FileStream(filename, FileMode.Create));
+                ViewData["filelocation"] = "/" + Path.GetFileName(pic.FileName);
+            }
+            //napravi kopija od izbraniot student
+            //var selected = await _context.Student.Where(s => s.FirstName.Equals(firstName) && s.LastName.Equals(lastName)).FirstOrDefaultAsync();
+            var selected = await _context.Vehicle.FirstOrDefaultAsync(s => s.Make.Equals(Make) && s.ChassisNumber.Equals(chassisNumber));
+            selected.pic = "/images/" + chassisNumber + Path.GetFileName(pic.FileName);
+
+            //vnesi go vo databaza
+            //_context.Add(selected);
+            _context.Update(selected);
+            await _context.SaveChangesAsync();
+            var pom = from p in _context.Vehicle
+                      select p;
+            pom = pom.Where(p => p.ChassisNumber == selected.ChassisNumber);//sekoe vozilo ima unikaten broj na sasija
+            //dodadi vo showPictureview elementi za modelot
+            return View();
+        }
+
+        public async Task<IActionResult> addPicture(string? id)
+        {
+            
+            var vehicle = await _context.Vehicle
+                .FirstOrDefaultAsync(m => m.Id == id);
+            return View(vehicle);
+        }
         // GET: VehiclesEmployee
         public async Task<IActionResult> Index()
         {

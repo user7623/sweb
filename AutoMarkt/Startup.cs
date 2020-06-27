@@ -28,7 +28,9 @@ namespace AutoMarkt
             services.AddControllersWithViews();
 
             services.AddDbContext<AutoMarktContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("AutoMarktContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("AutoMarktContext"),
+                    options => options.MigrationsAssembly("AutoMarkt")
+                    ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

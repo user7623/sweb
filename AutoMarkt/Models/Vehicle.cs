@@ -44,7 +44,7 @@ namespace AutoMarkt.Models
         [Required]
         [StringLength(20)]
         [Display(Name = "Fuel type")]
-        public int Fuel { get; set; }
+        public string Fuel { get; set; }
 
         [Required]
         [Display(Name = "Chassis number")]
@@ -55,12 +55,12 @@ namespace AutoMarkt.Models
         [Display(Name = "Vehicle short description")]
         public string Description { get; set; }
 
-        public bool Approved { get; set; }
+        public Boolean Approved { get; set; }
 
         public string pic { get; set; }
 
         [Required]
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
         public DateTime SaleDate {get; set;}
 

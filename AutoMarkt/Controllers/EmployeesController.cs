@@ -48,12 +48,9 @@ namespace AutoMarkt.Controllers
             return View();
         }
 
-        // POST: Employees/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,LastName,Rank,Wage,Education,Phone,Email,pic,ProfitMade")] Employee employee)
+        public async Task<IActionResult> Create([Bind("Id,EmployeeId,Name,LastName,Rank,Wage,Education,Phone,Email,pic,ProfitMade")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -80,12 +77,9 @@ namespace AutoMarkt.Controllers
             return View(employee);
         }
 
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,LastName,Rank,Wage,Education,Phone,Email,pic,ProfitMade")] Employee employee)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,EmployeeId,Name,LastName,Rank,Wage,Education,Phone,Email,pic,ProfitMade")] Employee employee)
         {
             if (id != employee.Id)
             {

@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                Picture
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Make)
             </th>
             <th>
@@ -39,19 +42,23 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.pic)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeId)
             </th>
-            
+            <th>
+                @Html.DisplayNameFor(model => model.Approved)
+            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.pic)" height="25" width="25" alt="noImage" />
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Make)
             </td>
@@ -79,15 +86,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pic)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.EmployeeId)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.Approved)
+            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Approve</a> |
+                <a asp-action="Approve" asp-route-id="@item.Id">Approve_secondary button</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Decline</a>
             </td>
         </tr>
