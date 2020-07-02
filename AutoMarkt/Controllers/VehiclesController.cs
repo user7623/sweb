@@ -68,7 +68,22 @@ namespace AutoMarkt.Controllers
             return View(vehicle);
         }
 
-        // GET: Vehicles/Edit/5
+        // GET: Vehicles/ApproveOffer
+
+        public async Task<IActionResult> Approved(int? Id)
+        {
+            //var vehicle = from v in _context.Vehicle
+            //              select v;
+            //vehicle = vehicle.Where(f => f.Id == Id.ToString());
+
+            var vehicle = await _context.Vehicle.FindAsync(Id.ToString());
+
+            ModelState.FirstOrDefault(c => c.Key == "Id").Value.RawValue = true;
+            
+
+            return View();
+        }
+
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -97,14 +112,13 @@ namespace AutoMarkt.Controllers
                 return NotFound();
             }
 
-            vehicle.Approved = true;
-
+           
             return View(vehicle);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Make,Colour,cc,Price,EnginePower,Weight,Fuel,ChassisNumber,Description,pic,EmployeeId,SaleDate,BuyerFullname,buyerAddres,BuyerPhone")] Vehicle vehicle)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Make,Colour,cc,Price,EnginePower,Weight,Fuel,ChassisNumber,Description,pic,EmployeeId,Approved,SaleDate,BuyerFullname,buyerAddres,BuyerPhone")] Vehicle vehicle)
         {
             if (id != vehicle.Id)
             {
@@ -133,6 +147,9 @@ namespace AutoMarkt.Controllers
             }
             return View(vehicle);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(string id, [Bind("Id,Make,Colour,cc,Price,EnginePower,Weight,Fuel,ChassisNumber,Description,pic,EmployeeId,Approved,SaleDate,BuyerFullname,buyerAddres,BuyerPhone")] Vehicle vehicle)
         {
             if (id != vehicle.Id)

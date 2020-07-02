@@ -10,7 +10,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.pic)
+                <p>
+                    Picture
+                </p>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Make)
@@ -55,7 +57,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.pic)
+                    <img src="@Html.DisplayFor(modelItem => item.pic)" height="25" width="25" alt="noImage" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Make)
@@ -92,7 +94,7 @@
                     @Html.DisplayFor(modelItem => item.Approved)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Approve</a>
+                    <a asp-action="Approved" asp-route-id="@item.Id">Approve</a>
                 </td>
             </tr>
         }
